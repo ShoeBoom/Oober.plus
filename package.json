@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "firestore-deploy": "firebase deploy --only firestore"
   },
   "dependencies": {
     "antd": "^4.6.5",

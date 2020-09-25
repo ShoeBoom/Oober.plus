@@ -1,0 +1,9 @@
+{
+  "firestore": {
+    "predeploy": [
+      "yarn --cwd firestore build"
+    ],
+    "rules": "firestore/build/firestore.rules",
+    "indexes": "firestore/firestore.indexes.json"
+  }
+}

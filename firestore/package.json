@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "build": "rm -rf ./build && mkdir build && fireward -i firestore.ward -o build/firestore.rules -l rules"
+  },
+  "devDependencies": {
+    "fireward": "^1.6.0"
+  }
+}
