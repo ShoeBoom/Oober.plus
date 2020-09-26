@@ -1,5 +1,5 @@
 // shubham
-import { Form, Input, Button, AutoComplete, Space } from "antd";
+import { Form, Input, Button, AutoComplete, DatePicker } from "antd";
 import { ArrowRightOutlined } from "@ant-design/icons";
 import { useState } from "react";
 import cities from "./canadacities.json"
@@ -8,7 +8,7 @@ const getVals = (str: string) => {
   let values = []
 
   cities.forEach((v, i) => {
-    if (v.toLowerCase().startsWith(str.toLowerCase())){
+    if (v.toLowerCase().startsWith(str.toLowerCase())) {
       values.push({
         value: v,
       })
@@ -44,7 +44,7 @@ export function SearchForm() {
             placeholder="From"
           />
         </Form.Item>
-        
+
         <ArrowRightOutlined className="h-full mx-4 mb-6 " />
 
         <Form.Item
@@ -60,6 +60,16 @@ export function SearchForm() {
           />
         </Form.Item>
       </div>
+
+
+      <Form.Item
+        className="flex-grow"
+        label="Departs At"
+        name="time"
+        rules={[{ required: true, message: ' ' }]}
+      >
+        <DatePicker/>
+      </Form.Item>
 
       <Form.Item>
         <Button type="primary" htmlType="submit">
