@@ -9,9 +9,11 @@
     "firestore-deploy": "firebase deploy --only firestore"
   },
   "dependencies": {
+    "@ant-design/icons": "^4.2.2",
     "antd": "^4.6.5",
     "firebase": "^7.21.1",
     "firebase-admin": "^9.2.0",
+    "formik": "^2.1.5",
     "next": "9.5.3",
     "react": "16.13.1",
     "react-dom": "16.13.1",
