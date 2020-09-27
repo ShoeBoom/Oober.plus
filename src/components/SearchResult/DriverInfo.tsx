@@ -9,7 +9,7 @@ export function DriverInfo({vehicleName, driverName, rating, openMessages, telNu
       <div className="flex flex-row justify-between">
 
         <Space className="flex flex-row flex-grow p-2">
-          <div className="flex flex-col text-base" style={{overflow:'auto', whiteSpace:'nowrap'}}>
+          <div className="flex flex-col text-base" style={{ whiteSpace:'nowrap'}}>
             <div> Driver: {driverName}</div>
             <Rate disabled defaultValue={rating} value={rating} />
           </div>

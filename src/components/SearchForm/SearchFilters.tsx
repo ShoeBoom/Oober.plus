@@ -6,22 +6,18 @@ const CheckboxGroup = Checkbox.Group;
 const options = ["car", "bus", "train"];
 
 interface SearchFiltersProps {
-  onChange?(v: { seats: number, minRating: number, price: { min: number, max: number }, vehicleType: string[] }): void;
+  onChange?(v: { seats: number, price: { min: number, max: number }, vehicleType: string[] }): void;
 }
 
 export function SearchFilters({ onChange: onChangeParent }: SearchFiltersProps) {
   const [seats, setSeats] = useState(1)
-  const [minRating, setMinRating] = useState(0)
   const [price, setPrice] = useState({ min: 0, max: 10 })
   const [vehicleType, setVehicleType] = useState(["car", "bus", "train"])
 
   useEffect(() => {
-    onChangeParent({ seats, minRating, price, vehicleType })
-  }, [seats, minRating, price, vehicleType])
+    onChangeParent({ seats,  price, vehicleType })
+  }, [seats, price, vehicleType])
 
-  function onChangeStarArguments(number) {
-    setMinRating(number)
-  }
 
   function onChangeSeats(value) {
     setSeats(value)
@@ -53,11 +49,6 @@ export function SearchFilters({ onChange: onChangeParent }: SearchFiltersProps) 
         Min # Available Seats:
         <br />
         <InputNumber min={1} defaultValue={1} onChange={onChangeSeats} />
-      </div>
-      <div>
-        Min Ratings:
-        <br />
-        <Rate onChange={onChangeStarArguments} />
       </div>
       <div>
         Price Range:

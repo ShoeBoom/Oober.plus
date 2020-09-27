@@ -11,15 +11,15 @@ export default function SignIn() {
     try {
       await firebase.auth().signInWithEmailAndPassword(values.email, values.password)
       message.success("Logged In")
-      let x;
-      x = firebase.auth().onAuthStateChanged(user => {
+      let unsub;
+      unsub = firebase.auth().onAuthStateChanged(user => {
         if (user) {
           router.back();
-          x()
+          unsub()
         }
       })
     }catch (error) {
-      message.error("Incorrect Password or Username")
+      message.error("Incorrect Password or Username!")
     }
 
 

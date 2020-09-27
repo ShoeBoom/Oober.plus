@@ -4,6 +4,7 @@ import moment from "moment";
 import firebase from "@utils/client/client";
 import "firebase/firestore"
 import "firebase/auth"
+import { message } from "antd"
 
 export default function Home() {
 	async function post(values: {
@@ -23,19 +24,28 @@ export default function Home() {
 		const depTime = values.time.unix();
 
 		const uid = firebase.auth().currentUser.uid;
+		// let info = (await db.collection('user').doc(uid).get()).data()
+		try {
+			await db.collection("listing").add({
+				title: values.title,
+				description: values.description,
+				capacity: values.capacity,
+				dest: values.addressB,
+				depTime: new Date(depTime),
+				origin: values.addressA,
+				price: values.price,
+				seatsRemaining: values.passengers,
+				type: values.vehicleType,
+				uid: uid,
+				// name: info.name,
+				// tel: info.phone,
+				// rating: info.rating
+			})
+			message.success("Advertisement posted successfully!")
+		} catch (error) {
+			message.error("Incorrect Inputs!")
+		}
 
-		await db.collection("listing").add({
-			title: values.title,
-			description: values.description,
-			capacity: values.capacity,
-			dest: values.addressB,
-			depTime: depTime,
-			origin: values.addressA,
-			price: values.price,
-			seatsRemaining: values.passengers,
-			type: values.vehicleType,
-			uid: uid
-		})
 	}
 
 	return (

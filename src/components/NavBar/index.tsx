@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "antd";
-import { PlusOutlined } from "@ant-design/icons";
+import { FormOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import style from './navbar.module.css';
 import { useRouter } from 'next/router'
@@ -27,7 +27,7 @@ export function Navbar() {
     }
 
     return (
-        <nav className={style["navbar"]}>
+        <nav className={style["navbar"]} id="nav">
             <div className="nav-left">
                 <Link href="/">
                     <div className={style["nav-item"]}>
@@ -38,10 +38,10 @@ export function Navbar() {
             {loginStatus ?
                 <div className={style["nav-right"]}>
                     <div className={style["nav-item"]}>
-                        <Link href="/post"><PlusOutlined /></Link>
+                        <Link href="/post"><FormOutlined className="text-2xl"/></Link>
                     </div>
                     <div className={style["nav-item"]}>
-                        <Link href="/myAccount">
+                        <Link href="/account">
                             <svg width="40px" height="40px">
                                 <defs>
                                     <pattern id="image" x="0%" y="0%" height="100%" width="100%" viewBox="0 0 512 512">

@@ -20,7 +20,7 @@ export function SearchResult({ telNumber = "123-123-1234", vehicleName = "Toyota
 
 
 
-	const uid = firebase.auth().currentUser.uid;
+	// const uid = firebase.auth().currentUser.uid;
 
 	return (
 		<div className="flex flex-row border-solid border-gray-500 border-opacity-50 border-2">
@@ -29,7 +29,6 @@ export function SearchResult({ telNumber = "123-123-1234", vehicleName = "Toyota
 			{/**border-radius:1px border-color:#000 width:250px height 250px */}
 			<div>
 				<div className="flex flex-row flex-grow  p-2"> {/* */}
-              const uid = firebase.auth().currentUser.uid;
               <DriverInfo
 						telNumber={telNumber}
 						vehicleName={vehicleName}

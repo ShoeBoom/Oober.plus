@@ -93,6 +93,7 @@ export function SubmitForm({onFinish: onFinishParent}) {
         rules={[
           {
             required: true,
+            message:"Invalid number of passengers!"
           },
         ]}
       >
