@@ -4,7 +4,6 @@ import { RegisterForm } from "@components/UserActions/Register";
 import firebase from '@utils/client/client'
 import '@firebase/auth'
 import "@firebase/firestore"
-import { firestore } from 'firebase-admin';
 
 export default function Home() {
 
