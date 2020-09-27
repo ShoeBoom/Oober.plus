@@ -1,6 +1,6 @@
 // typed by Adrian Wu
 
-import { Form, Input, Button, Checkbox } from "antd";
+import { Form, Input, Button, Checkbox, Space } from "antd";
 import Link from "next/link";
 import React from "react";
 
@@ -9,7 +9,7 @@ interface Props {
   onComplete?(v): void;
 }
 
-export function SignInForm({ onComplete } : Props) {
+export function SignInForm({ onComplete }: Props) {
 
   const layout = {
     labelCol: { span: 5 },
@@ -35,9 +35,16 @@ export function SignInForm({ onComplete } : Props) {
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}>
       <Form.Item
-        label="Username"
-        name="username"
-        rules={[{ required: true, message: 'Please input your username!' }]}>
+        label="Email"
+        name="email"
+        rules={[{
+          type: 'email',
+          message: 'The input is not valid E-mail!',
+          },
+          {
+          required: true,
+          message: 'Please input your E-mail!',
+        }]}>
         <Input />
       </Form.Item>
 
@@ -53,10 +60,12 @@ export function SignInForm({ onComplete } : Props) {
       </Form.Item>
 
       <Form.Item {...tailLayout}>
-        <Button type="primary" htmlType="submit">
-          Submit
+        <Space>
+          <Button type="primary" htmlType="submit">
+            Sign In
         </Button>
-         Or <Link href="/register">register now!</Link>
+         <span> Or <Link href="/register">register now!</Link> </span>
+        </Space>
       </Form.Item>
     </Form>
 

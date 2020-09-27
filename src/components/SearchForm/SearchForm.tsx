@@ -1,8 +1,10 @@
 // shubham
-import { Form, Input, Button, AutoComplete, DatePicker } from "antd";
+import { Form, Input, Button, AutoComplete, DatePicker, Space } from "antd";
 import { ArrowRightOutlined } from "@ant-design/icons";
 import { useState } from "react";
 import cities from "./canadacities.json"
+import moment from "moment";
+import { truncate } from "fs/promises";
 
 const getVals = (str: string) => {
   let values = []
@@ -18,9 +20,19 @@ const getVals = (str: string) => {
   return values;
 };
 
-export function SearchForm() {
+interface Props {
+  onSubmit?(v): void,
+  initOrigin?: string,
+  initDest?: string,
+  initFrom?: number,
+  initTo?: number,
+
+}
+
+export function SearchForm({ onSubmit, initOrigin = "", initDest = "", initFrom, initTo }: Props) {
   const onFinish = (values) => {
     console.log(`Received values of form:, `, values);
+    onSubmit(values);
   };
   const [options, setOptions] = useState<{ value: string }[]>([]);
 
@@ -35,13 +47,14 @@ export function SearchForm() {
         <Form.Item
           className="flex-grow"
           name="location1"
+          initialValue={initOrigin}
           rules={[{ required: true, message: ' ' }]}
         >
           <AutoComplete
             options={options}
             className="w-full"
             onSearch={onSearch}
-            placeholder="From"
+            placeholder="Origin"
           />
         </Form.Item>
 
@@ -50,26 +63,37 @@ export function SearchForm() {
         <Form.Item
           className="flex-grow"
           name="location2"
+          initialValue={initDest}
           rules={[{ required: true, message: ' ' }]}
         >
           <AutoComplete
             options={options}
             className="w-full"
             onSearch={onSearch}
-            placeholder="To"
+            placeholder="Destination"
           />
         </Form.Item>
       </div>
 
+      <Space className="flex flex-row">
+        <Form.Item
+          className=""
+          label="Departs From"
+          name="minTime"
+          rules={[{ required: true, message: ' ' }]}
+        >
+          <DatePicker showTime showSecond={false}/>
+        </Form.Item>
+        <Form.Item
+          className=""
+          label="To"
+          name="maxTime"
+          rules={[{ required: true, message: ' ' }]}
+        >
+          <DatePicker showTime showSecond={false} />
+        </Form.Item>
+      </Space>
 
-      <Form.Item
-        className="flex-grow"
-        label="Departs At"
-        name="time"
-        rules={[{ required: true, message: ' ' }]}
-      >
-        <DatePicker/>
-      </Form.Item>
 
       <Form.Item>
         <Button type="primary" htmlType="submit">

@@ -1,7 +1,7 @@
 //edited by Vimal
 import { Button, Space } from "antd";
 
-export function RideInfo({ vehicleType, passengerNum, price}) {
+export function RideInfo({vehicleType, passengerNum, price}) {
   return (
     <div className="w-full h-full">
       <div className="p-2" > Type: {vehicleType}</div>

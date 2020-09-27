@@ -1,17 +1,17 @@
 //edited by Vimal
-import { Button, Space } from "antd";
+import { Button, Space, Rate } from "antd";
 import { MessageOutlined } from "@ant-design/icons";
 
-export function DriverInfo({ vehicleName, driverName, rating, telNumber, openMessages }) {
+export function DriverInfo({vehicleName, driverName, rating, openMessages, telNumber}) {
   return (
-    <div className="w-full h-full">
+    <div className="w-full h-full" >
       <div className="p-2" >{vehicleName}</div>
       <div className="flex flex-row justify-between">
 
         <Space className="flex flex-row flex-grow p-2">
-          <div className="flex flex-col text-base">
+          <div className="flex flex-col text-base" style={{overflow:'auto', whiteSpace:'nowrap'}}>
             <div> Driver: {driverName}</div>
-            <div> rating: {rating}</div>
+            <Rate disabled defaultValue={rating} value={rating} />
           </div>
         </Space>
 
@@ -20,7 +20,7 @@ export function DriverInfo({ vehicleName, driverName, rating, telNumber, openMes
             <MessageOutlined className="text-5xl" />
           </div>
 
-          <div className="flex flex-col text-base">
+          <div className="flex flex-col text-base" style={{overflow:'auto', whiteSpace:'nowrap'}}>
             <div className="bg-gray-400" > Contact</div>
             <div> Tel #: {telNumber}</div>
           </div>

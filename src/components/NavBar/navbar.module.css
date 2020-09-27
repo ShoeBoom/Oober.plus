@@ -1,0 +1,19 @@
+
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px 30px;
+    background-color: #E8E8E8;
+}
+
+.navbar .nav-right{
+    display: flex;
+    flex-direction: row!important;
+}
+
+.nav-item {
+    margin: auto 10px;
+    cursor: pointer;
+}

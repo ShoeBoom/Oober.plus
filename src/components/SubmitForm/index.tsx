@@ -3,8 +3,8 @@
 import { Form, Input, InputNumber, Button, Select, Upload, DatePicker, TimePicker, Divider } from "antd";
 import React from "react";
 
-export function SubmitForm() {
-  // code
+export function SubmitForm({onFinish: onFinishParent}) {
+  
   const layout = {
     labelCol: {
       span: 5,
@@ -26,6 +26,7 @@ export function SubmitForm() {
 
   const onFinish = (values) => {
     console.log("Success:", values);
+    onFinishParent(values)
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
@@ -45,6 +46,7 @@ export function SubmitForm() {
         rules={[
           {
             required: true,
+            message: "Please input a title!"
           },
         ]}
       >
@@ -56,7 +58,8 @@ export function SubmitForm() {
         rules={[
           {
             required: true,
-          },
+            message: "Please input a description!"
+          }
         ]}
       >
         <Input.TextArea />
@@ -64,7 +67,11 @@ export function SubmitForm() {
       <Form.Item
         name="addressA"
         label="Address Point A"
-        rules={[{ required: true }]}
+        rules={[
+          { required: true,
+          message: "Please input an address point A!" 
+        }
+      ]}
       >
         <Input />
       </Form.Item>
@@ -74,7 +81,8 @@ export function SubmitForm() {
         rules={[
           {
             required: true,
-          },
+            message: "Please input an address point B!"
+          }
         ]}
       >
         <Input />
@@ -88,10 +96,10 @@ export function SubmitForm() {
           },
         ]}
       >
-        <InputNumber min={1} max={8} />
+        <InputNumber min={0} max={8} />
       </Form.Item>
       <Form.Item
-        name="Capacity"
+        name="capacity"
         label="Capacity"
         rules={[
           {
@@ -109,55 +117,38 @@ export function SubmitForm() {
         rules={[
           {
             required: true,
-            message: "Please select your vehicle type!",
+            message: "Please select your vehicle type!"
           },
         ]}
       >
         <Select placeholder="Please select a type">
-          <Option value="small">Small (S)</Option>
-          <Option value="large">Large (L)</Option>
-          <Option value="extra-Large">Extra Large (XL)</Option>
+          <Option value="car">Car</Option>
+          <Option value="train">Train</Option>
+          <Option value="bus">Bus</Option>
         </Select>
       </Form.Item>
+
       <Form.Item
-        name="select-date"
-        label="Select Date"
+        name="time"
+        label="Select Date and Time"
         rules={[
           {
             required: true,
+            message: "Please select a date and time!"
           },
         ]}
       >
-        <DatePicker />
+        <DatePicker showTime showSecond={false}/>
       </Form.Item>
       <Form.Item
-        name="select-time"
-        label="Select Time"
+        name="price"
+        label="Price"
         rules={[
           {
-            required: true,
-          },
-        ]}
-      >
-        <TimePicker />
-      </Form.Item>
-      <Divider orientation="left">Contact Information</Divider>
-      <Form.Item
-        name="phone"
-        label="Phone"
-        rules={[{
-          required: true,
-          pattern: new RegExp("^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$"),
-          message: "Invalid phone number!",}]}>
-        <Input />
-      </Form.Item>
-      <Form.Item
-        name="Email"
-        label="Email"
-        rules={[{ type: "email", 
-          required: true, 
-          message:"The input is not a valid E-mail!"}]}>
-        <Input />
+            required: true, 
+            message:"Please enter a price!"
+          } ]}>
+        <InputNumber min={0} formatter={value => `$ ${value}`}  />
       </Form.Item>
       <Form.Item {...layout2}>
         <Button type="primary" htmlType="submit">

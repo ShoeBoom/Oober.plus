@@ -1,0 +1,9 @@
+.test {
+    @apply flex items-center justify-center flex-col;
+    background-image: url("/hpBg.jpg"); 
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: none;
+}

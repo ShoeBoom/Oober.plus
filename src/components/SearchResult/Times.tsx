@@ -2,7 +2,7 @@
 import { Button, Space } from "antd";
 import { MessageOutlined } from "@ant-design/icons";
 
-export function Times({ datePosted, departureTime}) {
+export function Times({datePosted, departureTime}) {
   return (
     <div className="flex flex-row justify-between">
               <p>Date Posted: {datePosted}</p>
