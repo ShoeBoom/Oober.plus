@@ -18,14 +18,8 @@ export default function Home() {
                 name: values.name,
                 uid: uid,
             });
+            router.push("/");
             message.success("Registered")
-            let unsub;
-            unsub = firebase.auth().onAuthStateChanged(user => {
-                if (user) {
-                    router.push("/");
-                    unsub()
-                }
-            })
         } catch (error) {
             message.error("Error");
         }

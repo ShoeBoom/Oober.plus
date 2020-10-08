@@ -21,8 +21,8 @@ export function Navbar() {
     })
 
     const router = useRouter()
-    function logout() {
-        firebase.auth().signOut().then();
+    async function logout() {
+        await firebase.auth().signOut();
         router.reload()
     }
 
