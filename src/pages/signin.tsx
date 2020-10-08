@@ -9,16 +9,10 @@ export default function SignIn() {
   const router = useRouter()
   async function login(values) {
     try {
-      await firebase.auth().signInWithEmailAndPassword(values.email, values.password)
+      await firebase.auth().signInWithEmailAndPassword(values.email, values.password);
+      router.back();
       message.success("Logged In")
-      let unsub;
-      unsub = firebase.auth().onAuthStateChanged(user => {
-        if (user) {
-          router.back();
-          unsub()
-        }
-      })
-    }catch (error) {
+    } catch (error) {
       message.error("Incorrect Password or Username!")
     }
 
