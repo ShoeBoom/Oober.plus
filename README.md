@@ -1,3 +1,6 @@
+Created By [@SenseiWoo](https://github.com/SenseiWoo), [@VimalMaken](https://github.com/VimalMaken), [@echang49](https://github.com/echang49) and [@ShoeBoom](https://github.com/ShoeBoom) for [Borderhacks 2020](https://borderhacks.devpost.com/).
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
